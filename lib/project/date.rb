@@ -1096,23 +1096,23 @@ class Date
     new_by_frags(elem, sg)
   end
 
-  class << self
-
-    def once(*ids) # :nodoc: -- restricted
-      for id in ids
-        module_eval <<-"end;"
-          alias_method :__#{id.object_id}__, :#{id.to_s}
-          private :__#{id.object_id}__
-          def #{id.to_s}(*args)
-            @__ca__[#{id.object_id}] ||= __#{id.object_id}__(*args)
-          end
-        end;
-      end
-    end # <<dummy
-
-    private :once
-
-  end
+  # class << self
+  #
+  #   def once(*ids) # :nodoc: -- restricted
+  #     for id in ids
+  #       module_eval <<-"end;"
+  #         alias_method :__#{id.object_id}__, :#{id.to_s}
+  #         private :__#{id.object_id}__
+  #         def #{id.to_s}(*args)
+  #           @__ca__[#{id.object_id}] ||= __#{id.object_id}__(*args)
+  #         end
+  #       end;
+  #     end
+  #   end # <<dummy
+  #
+  #   private :once
+  #
+  # end
 
   # *NOTE* this is the documentation for the method new!().  If
   # you are reading this as the documentation for new(), that is
@@ -1144,7 +1144,7 @@ class Date
   # Get the date as an Astronomical Modified Julian Day Number.
   def amjd() ajd_to_amjd(@ajd) end
 
-  once :amjd
+  # once :amjd
 
   # Get the date as a Julian Day Number.
   def jd() ajd_to_jd(@ajd, @of)[0] end
@@ -1159,7 +1159,7 @@ class Date
   # Reform (in Italy and the Catholic countries).
   def ld() jd_to_ld(jd) end
 
-  once :jd, :day_fraction, :mjd, :ld
+  # once :jd, :day_fraction, :mjd, :ld
 
   # Get the date as a Civil Date, [year, month, day_of_month]
   def civil() jd_to_civil(jd, @sg) end # :nodoc:
@@ -1173,8 +1173,8 @@ class Date
   def weeknum0() jd_to_weeknum(jd, 0, @sg) end # :nodoc:
   def weeknum1() jd_to_weeknum(jd, 1, @sg) end # :nodoc:
 
-  once :civil, :ordinal, :commercial, :weeknum0, :weeknum1
-  private :civil, :ordinal, :commercial, :weeknum0, :weeknum1
+  # once :civil, :ordinal, :commercial, :weeknum0, :weeknum1
+  # private :civil, :ordinal, :commercial, :weeknum0, :weeknum1
 
   # Get the year of this date.
   def year() civil[0] end
@@ -1204,8 +1204,8 @@ class Date
   # fraction_of_a_second]
   def time() day_fraction_to_time(day_fraction) end # :nodoc:
 
-  once :time
-  private :time
+  # once :time
+  # private :time
 
   # Get the hour of this date.
   def hour() time[0] end
@@ -1245,7 +1245,7 @@ class Date
   # Saturday is day-of-week 6.
   def wday() jd_to_wday(jd) end
 
-  once :wday
+  # once :wday
 
 =begin
   MONTHNAMES.each_with_index do |n, i|
@@ -1271,7 +1271,7 @@ class Date
   # Is the current date new-style (Gregorian Calendar)?
   def gregorian? () !julian? end
 
-  once :julian?, :gregorian?
+  # once :julian?, :gregorian?
 
   def fix_style # :nodoc:
     if julian?
@@ -1287,7 +1287,7 @@ class Date
                 fix_style)[-1] == 29
   end
 
-  once :leap?
+  # once :leap?
 
   # When is the Day of Calendar Reform for this Date object?
   def start() @sg end
