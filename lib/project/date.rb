@@ -193,8 +193,6 @@
 #
 #     puts secs_to_new_year()
 
-require 'date/format'
-
 # Class representing a date.
 #
 # See the documentation to the file date.rb for an overview.
@@ -1439,8 +1437,6 @@ class Date
 
   def next_year(n=1) self >> n * 12 end
   def prev_year(n=1) self << n * 12 end
-
-  require 'enumerator'
 
   # Step the current date forward +step+ days at a
   # time (or backward, if +step+ is negative) until
