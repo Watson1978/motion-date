@@ -6,10 +6,10 @@ Gem::Specification.new do |spec|
   spec.version       = VERSION
   spec.authors       = [""]
   spec.email         = ["watson1978@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
-  spec.license       = ""
+  spec.description   = %q{This is RubyMotion library which provides methods of Date/DateTime/Time which are same as CRuby Standard Library.}
+  spec.summary       = %q{This is RubyMotion library which provides methods of Date/DateTime/Time which are same as CRuby Standard Library.}
+  spec.homepage      = "https://github.com/Watson1978/motion-date"
+  spec.license       = "MIT"
 
   files = []
   files << 'README.md'
